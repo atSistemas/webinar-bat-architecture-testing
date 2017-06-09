@@ -3,7 +3,9 @@ pipeline {
     stages { 
         stage('unit-test') {
             steps {
-                echo 'unit-test'
+                withMaven(jdk: 'JDK_8u131', maven: 'Maven_3.5.0') {
+					bat 'mvn clean install -Pall-tests'
+				}
             }
         }
 		
