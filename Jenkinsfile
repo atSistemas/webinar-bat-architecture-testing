@@ -1,6 +1,8 @@
 pipeline {
     agent any
     stages { 
+		echo "Building branch: $env.BRANCH_NAME"
+		
         stage('unit-test') {
             steps {
                 withMaven(jdk: 'JDK_8u131', maven: 'Maven_3.5.0') {
