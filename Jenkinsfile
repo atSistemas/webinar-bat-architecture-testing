@@ -1,23 +1,15 @@
+//TODO: ajustar a linux.
+//TODO: configurar setting de maven para realizar el despliegue en nexus. (deploy)
+//TODO: determinar la version de java(default) y la de maven.
 pipeline {
     agent any
-    stages { 
-		stage('info') {	
-			steps {
-				echo "Building branch: ${env.BRANCH_NAME}"
-			}			
-		}
-		
-        stage('unit-test') {
+	
+    stages { 		
+        stage('build-and-deploy') {
             steps {
                 withMaven(jdk: 'JDK_8u131', maven: 'Maven_3.5.0') {
-					bat 'mvn clean install -Pall-tests'
+					bat 'mvn clean install'
 				}
-            }
-        }
-		
-		stage('integration-test') {
-            steps {
-                echo 'integration-test'
             }
         }
     }
