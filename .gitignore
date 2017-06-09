@@ -16,3 +16,5 @@
 /.DS_Store/
 /.metadata/
 
+/.idea/
+/bat-architecture-testing.iml
